@@ -27,4 +27,8 @@ code {
   .textShadow {
     text-shadow: -3px 3px 0 var(--quagsire-mist);
   }
+  .battleTextBg {
+    background-color: var(--quagsire-muddy);
+    color: white;
+  }
 }

@@ -1,0 +1,36 @@
+.rainDiv {
+  position: fixed;
+  top: 0;
+  display: flex;
+  z-index: -2;
+  background: transparent;
+}
+
+.rainDiv span {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  background: blue;
+  margin: 0 2px;
+  border-radius: 50%;
+  animation: rain 5s linear infinite;
+  transform-origin: bottom;
+}
+
+@keyframes rain {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(250px) scale(1);
+  }
+  50% {
+    transform: translateY(500px) scale(1);
+  }
+  75% {
+    transform: translateY(750px) scale(1);
+  }
+  100% {
+    transform: translateY(1000px) scale(1);
+  }
+}

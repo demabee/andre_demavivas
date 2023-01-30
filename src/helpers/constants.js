@@ -22,7 +22,10 @@ export const skills = [
   "Figma",
   "PHP",
   "Laravel",
-  "AWS"
+  "AWS",
+  "Bootstrap",
+  "MaterialUI",
+  "Tailwind",
 ];
 
 export const works = [

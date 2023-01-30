@@ -1,6 +1,9 @@
 import { useRef } from 'react';
 import styled from 'styled-components';
 import CustomButton from '../CustomButton';
+import emailjs from '@emailjs/browser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const InputText = styled.input`
   border: 5px solid var(--quagsire-muddy);
@@ -23,7 +26,8 @@ const SelectInput = styled.select`
   background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right var(--quagsire-water);
   color: var(--quagsire-muddy);
   -webkit-appearance: none;
-  background-position: 740px 12px;
+  background-position-x: 99%;
+  background-position-y: 12px;
 `;
 
 const TextArea = styled.textarea`
@@ -56,19 +60,43 @@ const FloatingImageTablet = styled.div`
 
 const ContactMe = ({ isTablet, scrollPos, quagsireHi, width }) => {
   const form = useRef();
+  const nameInput = useRef();
+  const emailInput = useRef();
+  const selectInput = useRef();
+  const addtInfoInput = useRef();
+
   const handleSendEmail = (e) => {
-    console.log(e);
-    console.log(form);
     e.preventDefault();
-    // emailjs.sendForm(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMPLATE_ID, form.current, process.env.REACT_APP_USER_ID)
-    //   .then((result) => {
-    //     setShowToast(true);
-    //   }, (error) => {
-    //     console.log(error.text);
-    //   });
+    emailjs.sendForm(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMPLATE_ID, form.current, process.env.REACT_APP_USER_ID)
+      .then((result) => {
+        nameInput.current.value = '';
+        emailInput.current.value = '';
+        selectInput.current.value = '';
+        addtInfoInput.current.value = '';
+        notify('Email sent successfully');
+      }, (error) => {
+        console.log(error.text);
+      });
+  };
+
+  const notify = (text) => {
+    toast(`${text}!`);
   };
   return (
     <div className="mt-10 p-20 relative">
+      <ToastContainer
+        className="w-[500px]"
+        bodyClassName="font-pokemon text-xs"
+        position={!isTablet ? 'bottom-right' : 'top-center'}
+        autoClose={5000}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       {!isTablet && (
         <FloatingImage scrollPos={scrollPos} width={width}>
           <img src={quagsireHi} alt="Andre Demavivas" />
@@ -87,14 +115,14 @@ const ContactMe = ({ isTablet, scrollPos, quagsireHi, width }) => {
         <form ref={form} onSubmit={handleSendEmail}>
           <div className="xl:grid xl:grid-cols-2 xl:gap-4">
             <div className="form-group">
-              <InputText type="text" placeholder="Name" name="name" />
+              <InputText type="text" placeholder="Name" name="name" ref={nameInput} />
             </div>
             <div className="form-group xl:mt-0 mt-4">
-              <InputText type="email" placeholder="Email" name="email" />
+              <InputText type="email" placeholder="Email" name="email" ref={emailInput} />
             </div>
           </div>
           <div className="form-group mt-4">
-            <SelectInput placeholder="Name" name="jobType">
+            <SelectInput placeholder="Name" name="jobType" width={width} ref={selectInput}>
               <option value="" disabled>Choose an Option</option>
               <option value="FullStack">FullStack</option>
               <option value="Frontend">Frontend</option>
@@ -102,7 +130,7 @@ const ContactMe = ({ isTablet, scrollPos, quagsireHi, width }) => {
             </SelectInput>
           </div>
           <div className="form-group mt-4">
-            <TextArea placeholder="Additional Information" name="additionalInfo">
+            <TextArea placeholder="Additional Information" name="additionalInfo" ref={addtInfoInput}>
             </TextArea>
           </div>
           <div className="flex justify-center mt-5">

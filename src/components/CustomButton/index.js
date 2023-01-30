@@ -10,10 +10,10 @@ const StyledButton = styled.button`
   background: var(--quagsire-muddy);
 
   &:hover {
-    background: white;
+    background: transparent;
     color: var(--quagsire-muddy);
-    border: 2px solid var(--quagsire-muddy);
-    padding: 8px 30px;
+    border: 3px solid var(--quagsire-muddy);
+    padding: 7px 30px;
   }
 `;
 
