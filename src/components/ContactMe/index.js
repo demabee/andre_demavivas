@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import styled from 'styled-components';
 import CustomButton from '../CustomButton';
 import emailjs from '@emailjs/browser';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const InputText = styled.input`
@@ -84,19 +84,6 @@ const ContactMe = ({ isTablet, scrollPos, quagsireHi, width }) => {
   };
   return (
     <div className="mt-10 p-20 relative">
-      <ToastContainer
-        className="w-[500px]"
-        bodyClassName="font-pokemon text-xs"
-        position={!isTablet ? 'bottom-right' : 'top-center'}
-        autoClose={5000}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
       {!isTablet && (
         <FloatingImage scrollPos={scrollPos} width={width}>
           <img src={quagsireHi} alt="Andre Demavivas" />
