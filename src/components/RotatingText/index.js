@@ -1,30 +1,19 @@
-import { useEffect } from 'react';
-import TagCloud from 'TagCloud';
+import TagCloud from '@frank-mayer/react-tag-cloud';
 import { skills } from '../../helpers/constants';
 
-const RotatingText = ({ isTablet }) => {
-  useEffect(() => {
-    return () => {
-      const container = ".tagcloud";
-      const texts = [
-        ...skills
-      ];
-      const options = {
+const RotatingText = () => {
+  return (
+    <TagCloud
+      options={{
         radius: 300,
         maxSpeed: 'normal',
         initSpeed: "normal",
         keep: true,
-        containerClass: "tagcloudTablet"
-      };
-
-      TagCloud(container, texts, options);
-    };
-  }, []);
-  
-  return (
-    <div className="text-sphere">
-      <span className="tagcloud"></span>
-    </div>
+      }}
+      onClickOptions={{ passive: true }}
+    >
+      {skills}
+    </TagCloud>
   );
 };
 
