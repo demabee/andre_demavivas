@@ -1,38 +1,111 @@
-.App {
-  text-align: center;
+:root {
+  --quagsire-water: #83D5F6;
+  --quagsire-mist: #629CBD;
+  --quagsire-colby: #627BA4;
+  --quagsire-muddy: #6A5A8B;
+  --quagsire-nuoh: #3194A4;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.active {
+  color: var(--quagsire-water);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.text-quagsire-muddy {
+  color: var(--quagsire-muddy) !important;
+}
+
+.waves {
+  position:relative;
+  width: 100%;
+  height:15vh;
+  margin-bottom:-7px; /*Fix for safari gap*/
+  min-height:100px;
+  max-height:150px;
+}
+
+.content {
+  position:relative;
+  height:20vh;
+  text-align:center;
+  background-color: white;
+}
+
+/* Animation */
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+@keyframes move-forever {
+  0% {
+   transform: translate3d(-90px,0,0);
+  }
+  100% { 
+    transform: translate3d(85px,0,0);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* .text-shpere {
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  background: #1e1e1e;
+} */
+
+.tagcloud {
+  display: inline-block;
+  top: 0;
+  left: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.0625em;
+  font-size: 1.3em;
+}
+
+/* Change color of each text in sphere on hover   */
+.tagcloud--item {
   color: white;
+  text-transform: uppercase;
 }
 
-.App-link {
-  color: #61dafb;
+.tagcloud--item:hover {
+  color: var(--quagsire-muddy);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.tagcloudTablet {
+  height: 20px !important;
+  width: 20px !important;
+}
+
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .waves {
+    height:40px;
+    min-height:40px;
   }
-  to {
-    transform: rotate(360deg);
+  .content {
+    height:30vh;
+  }
+  h1 {
+    font-size:24px;
   }
 }
