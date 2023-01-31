@@ -5,7 +5,7 @@ import emailjs from '@emailjs/browser';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { validateEmailInput } from '../../helpers/customFunctions';
-import ReCAPTCHA from 'react-google-recaptcha';
+// import ReCAPTCHA from 'react-google-recaptcha';
 
 const InputText = styled.input`
   border: 5px solid ${props => props.isError ? '#ff5d5d' : 'var(--quagsire-muddy)'};
@@ -62,7 +62,7 @@ const FloatingImageTablet = styled.div`
 
 const ContactMe = ({ isTablet, scrollPos, quagsireHi, width }) => {
   const form = useRef();
-  const recatpchaRef = useRef();
+  // const recatpchaRef = useRef();
   const [nameInput, setNameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
   const [selectInput, setSelectInput] = useState('');
@@ -79,7 +79,7 @@ const ContactMe = ({ isTablet, scrollPos, quagsireHi, width }) => {
       email: emailInput,
       jobType: selectInput,
       additionalInfo: addtInfoInput,
-      'g-recaptcha-response': recatpchaRef.current.getValue(),
+      // 'g-recaptcha-response': recatpchaRef.current.getValue(),
     }
     emailjs.send(
       process.env.REACT_APP_SERVICE_ID,
@@ -94,7 +94,7 @@ const ContactMe = ({ isTablet, scrollPos, quagsireHi, width }) => {
           setSelectInput('');
           setAddtInfoInput('');
           setIsLoading(false);
-          recatpchaRef.current.reset();
+          // recatpchaRef.current.reset();
           notify('Email sent successfully');
         }
       }, (error) => {
@@ -112,8 +112,8 @@ const ContactMe = ({ isTablet, scrollPos, quagsireHi, width }) => {
       emailInput !== '' &&
       selectInput !== '' &&
       addtInfoInput !== '' &&
-      isEmailValid &&
-      recatpchaRef.current.getValue() !== null
+      isEmailValid
+      // recatpchaRef.current.getValue() !== null
     );
   }, [nameInput, emailInput, selectInput, addtInfoInput, isEmailValid, setIsComplete]);
   return (
@@ -207,12 +207,12 @@ const ContactMe = ({ isTablet, scrollPos, quagsireHi, width }) => {
             )}
           </div>
           <div className="flex justify-center mt-5">
-            <ReCAPTCHA
+            {/* <ReCAPTCHA
               ref={recatpchaRef}
               sitekey={process.env.REACT_APP_RECAPTCHA_KEY}
               size="normal"
               id="recaptcha-google"
-            />
+            /> */}
           </div>
           <div className="flex justify-center mt-5">
             <CustomButton type="submit" disabled={!isComplete}>
