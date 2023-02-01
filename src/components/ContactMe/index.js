@@ -67,9 +67,9 @@ const ContactMe = ({ isTablet, scrollPos, quagsireHi, width }) => {
   const [emailInput, setEmailInput] = useState('');
   const [selectInput, setSelectInput] = useState('');
   const [addtInfoInput, setAddtInfoInput] = useState('');
-  const [isEmailValid, setIsEmailValid] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(true);
   const [isFormValid, setIsFormValid] = useState({
     name: true,
     email: true,
