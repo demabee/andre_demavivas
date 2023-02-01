@@ -56,7 +56,7 @@ const FloatingImageTablet = styled.div`
   position: absolute;
   left: -20px;
   z-index: -1;
-  top: ${props => props.scrollPos > 3700 ? '750' : '800'}px;
+  top: ${props => props.scrollPos > 3700 ? '650' : '800'}px;
   transition-duration: 3s;
 `;
 
