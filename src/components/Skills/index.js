@@ -50,7 +50,7 @@ const Skills = ({ isTablet, scrollPos, backgroundAnimation }) => {
       </div>
       {!isTablet && (
         <FloatingImage scrollPos={scrollPos}>
-          <img src={quagsireHi} alt="Andre Demavivas" />
+          <img src={quagsireHi} alt="Andre Demavivas" loading="lazy" />
         </FloatingImage>
       )}
       {isTablet && (

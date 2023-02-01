@@ -70,6 +70,12 @@ const ContactMe = ({ isTablet, scrollPos, quagsireHi, width }) => {
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isFormValid, setIsFormValid] = useState({
+    name: true,
+    email: true,
+    selectInput: true,
+    addtlInfo: true,
+  });
 
   const handleSendEmail = (e) => {
     e.preventDefault();
@@ -125,7 +131,7 @@ const ContactMe = ({ isTablet, scrollPos, quagsireHi, width }) => {
       )}
       {isTablet && (
         <FloatingImageTablet scrollPos={scrollPos}>
-          <img src={quagsireHi} alt="Andre Demavivas" width={200} />
+          <img src={quagsireHi} alt="Andre Demavivas" width={200} loading="lazy" />
         </FloatingImageTablet>
       )}
       <div className="text-center mb-6">
@@ -140,13 +146,16 @@ const ContactMe = ({ isTablet, scrollPos, quagsireHi, width }) => {
                 value={nameInput}
                 onChange={(e) => {
                   setNameInput(e.target.value);
+                  setIsFormValid(prev => (
+                    { ...prev, name: e.target.value !== '' }
+                  ));
                 }}
-                isError={nameInput === ''}
+                isError={!isFormValid.name}
                 type="text"
                 placeholder="Name"
                 name="name"
               />
-              {nameInput === '' && (
+              {!isFormValid.name && (
                 <small className="pl-2 text-red-500">Name should not be empty!</small>
               )}
             </div>
@@ -157,13 +166,16 @@ const ContactMe = ({ isTablet, scrollPos, quagsireHi, width }) => {
                   const emailValid = validateEmailInput(e.target.value);
                   setIsEmailValid(emailValid.isValid);
                   setEmailInput(e.target.value);
+                  setIsFormValid(prev => (
+                    { ...prev, email: e.target.value !== '' }
+                  ));
                 }}
-                isError={emailInput === '' || !isEmailValid}
+                isError={!isFormValid.email || !isEmailValid}
                 type="email"
                 placeholder="Email"
                 name="email"
               />
-              {emailInput === '' && (
+              {!isFormValid.email && (
                 <small className="pl-2 text-red-500">Email should not be empty!</small>
               )}
               {emailInput !== '' && !isEmailValid && (
@@ -176,8 +188,11 @@ const ContactMe = ({ isTablet, scrollPos, quagsireHi, width }) => {
               value={selectInput}
               onChange={(e) => {
                 setSelectInput(e.target.value);
+                setIsFormValid(prev => (
+                  { ...prev, selectInput: e.target.value !== '' }
+                ));
               }}
-              isError={selectInput === ''}
+              isError={!isFormValid.selectInput}
               placeholder="Name"
               name="jobType"
               width={width}
@@ -187,7 +202,7 @@ const ContactMe = ({ isTablet, scrollPos, quagsireHi, width }) => {
               <option value="Frontend">Frontend</option>
               <option value="Backend">Backend</option>
             </SelectInput>
-            {selectInput === '' && (
+            {!isFormValid.selectInput && (
               <small className="pl-2 text-red-500">Job type should not be empty!</small>
             )}
           </div>
@@ -196,13 +211,16 @@ const ContactMe = ({ isTablet, scrollPos, quagsireHi, width }) => {
               value={addtInfoInput}
               onChange={(e) => {
                 setAddtInfoInput(e.target.value);
+                setIsFormValid(prev => (
+                  { ...prev, addtlInfo: e.target.value !== '' }
+                ));
               }}
-              isError={addtInfoInput === ''}
+              isError={!isFormValid.addtlInfo}
               placeholder="Additional Information"
               name="additionalInfo"
             >
             </TextArea>
-            {addtInfoInput === '' && (
+            {!isFormValid.addtlInfo && (
               <small className="pl-2 text-red-500">Additional Info should not be empty!</small>
             )}
           </div>
@@ -215,7 +233,7 @@ const ContactMe = ({ isTablet, scrollPos, quagsireHi, width }) => {
             /> */}
           </div>
           <div className="flex justify-center mt-5">
-            <CustomButton type="submit" disabled={!isComplete}>
+            <CustomButton type="submit" disabled={!isComplete || isLoading}>
               <div className="flex align-center justify-center">
                 {isLoading && (
                   <div role="status">

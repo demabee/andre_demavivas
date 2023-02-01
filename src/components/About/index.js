@@ -16,7 +16,7 @@ const About = ({ isTablet }) => {
       <div className="mt-10 text-center">
         <div className="flex justify-center">
           <ImageContainer>
-            <img src={me} alt="Andre Demavivas" style={{ borderRadius: '50%' }} />
+            <img src={me} alt="Andre Demavivas" style={{ borderRadius: '50%' }} loading="lazy" />
           </ImageContainer>
         </div>
         <div className="my-5 xl:mx-0 mx-4">

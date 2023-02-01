@@ -136,16 +136,16 @@ function App() {
       <div className="flex relative">
         {width >= TABLET && (
           <FloatingImage scrollPos={scrollPos}>
-            <img src={quagsireHi} alt="Andre Demavivas" />
+            <img src={quagsireHi} alt="Andre Demavivas" loading="lazy" />
           </FloatingImage>
         )}
         {width <= TABLET && (
           <FloatingImageTablet scrollPos={scrollPos}>
-            <img src={quagsireHi} alt="Andre Demavivas" width={200} />
+            <img src={quagsireHi} alt="Andre Demavivas" width={200} loading="lazy" />
           </FloatingImageTablet>
         )}
         <FloatingPokeball onClick={() => setShowMoveset(true)}>
-          <img src={pokeball} alt="Andre Demavivas" width={50} />
+          <img src={pokeball} alt="Andre Demavivas" width={50} loading="lazy" />
         </FloatingPokeball>
         {showMoveset && (
           <BattleBox>
