@@ -28,7 +28,6 @@ const WorkContainerOverlay = styled.div`
     background: transparent;
   }
 `;
-
 const WorKTitle = styled.h1`
   position: absolute;
   bottom: 10px;

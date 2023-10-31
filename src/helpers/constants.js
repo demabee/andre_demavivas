@@ -1,3 +1,6 @@
+import rntall from '../assets/images/rntall.png';
+import rntallmobile from '../assets/images/rntallmobile.png';
+import aesthetica from '../assets/images/aesthetica.png';
 import sd from '../assets/images/sd.png';
 import sdmobile from '../assets/images/sdmobile.png';
 import wd from '../assets/images/wd.png';
@@ -18,17 +21,21 @@ export const skills = [
   "Jquery",
   "ES6",
   "GIT",
-  "GITHUB",
   "Figma",
   "PHP",
   "Laravel",
   "AWS",
   "Bootstrap",
   "MaterialUI",
+  "AntDesign",
   "Tailwind",
+  "Expo"
 ];
 
 export const works = [
+  { title: 'RNTall', image: rntall },
+  { title: 'RNTall Mobile', image: rntallmobile },
+  { title: 'Aesthetica', image: aesthetica },
   { title: 'Swing Dreamers', image: sd },
   { title: 'SD Mobile App', image: sdmobile },
   { title: 'We Donate', image: wd },
